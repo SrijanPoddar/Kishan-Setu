@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumer Dashboard</title>
+    <link rel="stylesheet" href="static/css/consumer_dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ session['username'] }}</h1>
+
+        <div class="item-list">
+            <h2>Available Items</h2>
+            <table>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Price (Rs/kg)</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item[1] }}</td>
+                    <td>{{ item[2] }}</td>
+                    <td>{{ item[3] }} kg</td>
+                    <td>
+                        <!-- Form for consumer to send request -->
+                        <form action="{{ url_for('consumer_dashboard') }}" method="POST">
+                            <input type="hidden" name="item_name" value="{{ item[1] }}">
+                            <input type="hidden" name="farmer_id" value="{{ item[4] }}">
+                            <input type="number" name="quantity" placeholder="Enter kg" required min="1" max="{{ item[3] }}">
+                            <button type="submit">Request Item</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        {% if total_cost %}
+        <div class="alert success">
+            <strong>Bill</strong>
+            <p>Item: {{ item_name }} ({{ quantity }} kg)</p>
+            <p>Total Cost: Rs. {{ total_cost }}</p>
+        </div>
+        {% endif %}
+
+        <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+    </div>
+</body>
+</html>

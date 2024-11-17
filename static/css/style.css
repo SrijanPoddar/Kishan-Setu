@@ -1,0 +1,155 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #000; /* Black background */
+  color: #fff; /* White text for contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  width: 90%;
+  max-width: 900px;
+  background: #1c1c1c; /* Dark gray container background */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+
+/* Left Section */
+.left-section {
+  width: 50%;
+  background: #2c2c2c; /* Slightly lighter gray for the left section */
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header {
+  font-size: 36px;
+  font-weight: bold;
+  color: #66CDAA; /* Parrot Green */
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 10px rgba(102, 205, 170, 0.7); /* Glow effect */
+}
+
+.site-logo {
+  max-width: 80%;
+  height: auto;
+  margin: 20px auto;
+  filter: brightness(1.2); /* Slightly brighten the image */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 8px 30px rgba(102, 205, 170, 0.6); /* Glowing effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover effect */
+}
+
+.site-logo:hover {
+  transform: scale(1.1); /* Slightly zoom the image on hover */
+  box-shadow: 0 8px 40px rgba(102, 205, 170, 1); /* Stronger glow on hover */
+}
+
+.description {
+  font-size: 18px;
+  font-weight: bold; /* Bold description */
+  color: #ccc; /* Light gray for the description text */
+  line-height: 1.5;
+}
+
+/* Right Section */
+.right-section {
+  width: 50%;
+  padding: 30px;
+}
+
+h2 {
+  text-align: center;
+  color: #66CDAA; /* Parrot Green */
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 5px rgba(102, 205, 170, 0.7); /* Glow effect */
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff; /* White text for form labels */
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"], input[type="password"], button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #555; /* Darker border for form inputs */
+  border-radius: 5px;
+  font-size: 16px;
+  background: #333; /* Darker background for form inputs */
+  color: #fff; /* White text inside form inputs */
+}
+
+input:focus, button:focus {
+  border-color: #66CDAA; /* Highlight input focus with parrot green border */
+  outline: none;
+}
+
+.radio-group {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+  color: #fff; /* White text for radio buttons */
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 5px;
+}
+
+button {
+  background: #66CDAA; /* Parrot Green */
+  color: #000; /* Black text for contrast */
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #50b69f; /* Slightly darker green on hover */
+}
+
+.switch-link {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #fff; /* White text for the link */
+}
+
+.switch-link a {
+  color: #66CDAA; /* Parrot Green for links */
+  text-decoration: none;
+}
+
+.switch-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-section, .right-section {
+    width: 100%;
+  }
+
+  .site-logo {
+    max-width: 60%;
+  }
+}

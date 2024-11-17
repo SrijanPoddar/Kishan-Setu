@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard</title>
+    <link rel="stylesheet" href="static/css/farmer_dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Success popup script -->
+        {% if success %}
+            <script type="text/javascript">
+                alert("Item added successfully!");
+            </script>
+        {% endif %}
+
+        <div class="header">
+            <h1>Welcome, {{ username }}</h1>
+            <div class="logout-container">
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+
+        <div class="add-item-container">
+            <h3>Add Item for Sale</h3>
+            <form method="POST" action="/farmer_dashboard">
+                <label for="name">Item Name:</label>
+                <input type="text" id="name" name="name" required><br>
+
+                <label for="price">Price (Rs/kg):</label>
+                <input type="number" id="price" name="price" required><br>
+
+                <label for="quantity">Quantity (kg):</label>
+                <input type="number" id="quantity" name="quantity" required><br>
+
+                <button type="submit">Add Item</button>
+            </form>
+        </div>
+
+        <div class="requests-container">
+            <h3>Consumer Requests</h3>
+            <ul>
+                {% for request in requests %}
+                    <li>
+                        {{ request[1] }} (Item: {{ request[2] }})
+                        <form method="POST" action="/handle_request">
+                            <input type="hidden" name="request_id" value="{{ request[0] }}">
+                            <button type="submit" name="action" value="accept">Accept</button>
+                            <button type="submit" name="action" value="reject">Reject</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kishan Setu - Register</title>
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Left Section with Site Name, Image, and Description -->
+    <div class="left-section">
+      <div class="header">Kishan Setu</div>
+      <img src="static/images/images.jpg" alt="Kishan Setu Logo" class="site-logo">
+      <p class="description">
+        Welcome to Kishan Setu, a platform bridging the gap between farmers and consumers. 
+        Empowering farmers to sell their produce directly and helping consumers buy fresh, 
+        quality produce at fair prices.
+      </p>
+    </div>
+    <!-- Right Section with Registration Form -->
+    <div class="right-section">
+      <h2>Register</h2>
+      <form action="/register" method="POST">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="role">Role</label>
+        <div class="radio-group">
+          <input type="radio" id="farmer" name="role" value="farmer" required>
+          <label for="farmer">Farmer</label>
+
+          <input type="radio" id="consumer" name="role" value="consumer" required>
+          <label for="consumer">Consumer</label>
+        </div>
+
+        <button type="submit">Register</button>
+      </form>
+      <p class="switch-link">Already registered? <a href="/login">Login here</a>.</p>
+    </div>
+  </div>
+</body>
+</html>
