@@ -41,6 +41,25 @@ def init_db():
     conn.commit()
     conn.close()
 
+import google.generativeai as genai
+
+gem_api = os.getenv('gem_api')
+genai.configure(api_key=gem_api)
+
+
+model = genai.GenerativeModel(
+  model_name="gemini-1.5-flash",
+  # safety_settings = Adjust safety settings
+  # See https://ai.google.dev/gemini-api/docs/safety-settings
+  system_instruction="""you are an chatbot helper for an organic
+    farming website we connect organic farmer to the buyers  if relevant questio
+  n is asked reply accordingly else ask to ask a relevent questions reply in hindi""",
+)
+
+chat_session = model.start_chat(
+  history=[
+  ]
+)
 # Allowed file extensions
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
@@ -147,6 +166,16 @@ def consumer_dashboard():
         return render_template('consumer_dashboard.html', items=items)
 
     return redirect(url_for('login'))
+
+@app.route('/chat', methods=['POST'])
+def chat():
+    user_message = request.json.get('message')
+    if not user_message:
+        return jsonify({'error': 'No message provided'}), 400
+    response = chat_session.send_message(user_message)
+    response = str(response.candidates[0].content.parts[0].text)
+    print(response)
+    return jsonify({'message': response})
 
 # Logout Route
 @app.route('/logout')

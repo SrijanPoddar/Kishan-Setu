@@ -42,5 +42,27 @@
       <p class="switch-link">Already registered? <a href="/login">Login here</a>.</p>
     </div>
   </div>
+  <div class="chat-button" id="chatButton" onclick="toggleChat()">
+    💬
+</div>
+  
+  <!-- Chat Window -->
+  <div class="chat-popup" id="chatWindow">
+    <div class="chat-header">
+        <span>Chatbot</span>
+        <button type="button" class="close" onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-body" id = "chatBody">
+        <!-- Chat content can be placed here -->
+        <p>Hello! How can I help you today?</p>
+    </div>
+    <div class="chat-footer" >
+        <input type="text" id="userInput" placeholder="Type your message..." onkeydown="if(event.key === 'Enter') sendMessage()" style="width: 100%;">
+        <button type="button" onclick="sendMessage()">Send</button>
+        <button onclick="startRecognition()">🎤 Voice Input</button>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
